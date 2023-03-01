@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:sample/src/data/models/user/user.dart';
 import 'package:sample/src/data/repositories/user_repository.dart';
+import 'package:sample/src/data/services/api/user_service.dart';
 
 part 'user_state.dart';
 

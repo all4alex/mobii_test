@@ -13,7 +13,6 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<List<UserDto>> getUserList() {
-    return _service.getUserList('66d48847b3ca07af7cef789d6ac8fee8',
-        '550798be0efa8b98f6924cfb4ad812cd290f568a');
+    return _service.getUserList();
   }
 }

@@ -60,30 +60,33 @@ class _SampleItemListViewState extends State<SampleItemListView> {
             if (state is UserSuccess) {
               userList = state.userList;
             }
-            return ListView.builder(
+            return ListView.separated(
               // Providing a restorationId allows the ListView to restore the
               // scroll position when a user leaves and returns to the app after it
               // has been killed while running in the background.
               restorationId: 'sampleItemListView',
               itemCount: userList.length,
+              separatorBuilder: (context, index) {
+                return Divider();
+              },
               itemBuilder: (BuildContext context, int index) {
                 final user = userList[index];
 
                 return ListTile(
                     title: Text(' ${user.name}'),
-                    leading: CircleAvatar(
+                    trailing: CircleAvatar(
                       // Display the Flutter Logo image asset.
                       foregroundImage: NetworkImage('${user.imageUrl}'),
                     ),
-                    trailing: Text(' ${user.id}'),
+                    leading: Text(' ${user.id}'),
                     onTap: () {
-                      // Navigate to the details page. If the user leaves and returns to
-                      // the app after it has been killed while running in the
-                      // background, the navigation stack is restored.
-                      Navigator.restorablePushNamed(
-                        context,
-                        SampleItemDetailsView.routeName,
-                      );
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) {
+                          return SampleItemDetailsView(
+                            user: user,
+                          );
+                        },
+                      ));
                     });
               },
             );

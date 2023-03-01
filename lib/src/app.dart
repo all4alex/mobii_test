@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sample/src/data/models/user/user.dart';
 import 'package:sample/src/data/repositories/user_repository.dart';
 import 'package:sample/src/presentation/bloc/user_cubit.dart';
 
@@ -66,7 +67,9 @@ class MyApp extends StatelessWidget {
                     case SettingsView.routeName:
                       return SettingsView(controller: settingsController);
                     case SampleItemDetailsView.routeName:
-                      return const SampleItemDetailsView();
+                      return SampleItemDetailsView(
+                        user: UserDto(),
+                      );
                     case SampleItemListView.routeName:
                     default:
                       return SampleItemListView();
